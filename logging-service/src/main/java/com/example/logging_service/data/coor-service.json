@@ -1,51 +1,47 @@
 {
   "logs" : [ {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
-    "eventype" : "PaymentResponse",
-    "timestamp" : 1.7593152950154252E9,
-    "status" : true
-  }, {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
-    "eventype" : "OrderResponse",
-    "timestamp" : 1.7593152953732545E9,
-    "status" : true,
-    "id" : 40
-  }, {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "InventoryResponse",
-    "timestamp" : 1.75931529561549E9,
-    "status" : true
+    "timestamp" : 1.7626851801410108E9,
+    "data" : {
+      "status" : true
+    }
   }, {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "OrderResponse",
-    "timestamp" : 1.7593152957839952E9,
-    "status" : true,
-    "id" : 40
+    "timestamp" : 1.7626851804185693E9,
+    "data" : {
+      "status" : true,
+      "id" : 44
+    }
   }, {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "PaymentResponse",
-    "timestamp" : 1.7593152960412328E9,
-    "status" : true
+    "timestamp" : 1.7626851806264188E9,
+    "data" : {
+      "status" : true
+    }
   }, {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
-    "eventype" : "InventoryResponse",
-    "timestamp" : 1.7593152966522558E9,
-    "status" : true
-  }, {
-    "correlationId" : "386ac063-631b-44ab-abf5-f1339a8cd541",
-    "eventype" : "PaymentResponse",
-    "timestamp" : 1.7593153200414238E9,
-    "status" : false
-  }, {
-    "correlationId" : "386ac063-631b-44ab-abf5-f1339a8cd541",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "OrderResponse",
-    "timestamp" : 1.7593153203931162E9,
-    "status" : true,
-    "id" : 41
+    "timestamp" : 1.762685181041636E9,
+    "data" : {
+      "status" : true,
+      "id" : 44
+    }
   }, {
-    "correlationId" : "386ac063-631b-44ab-abf5-f1339a8cd541",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "InventoryResponse",
-    "timestamp" : 1.759315320642981E9,
-    "status" : true
+    "timestamp" : 1.762685181187628E9,
+    "data" : {
+      "status" : true
+    }
+  }, {
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
+    "eventype" : "PaymentResponse",
+    "timestamp" : 1.7626851816559305E9,
+    "data" : {
+      "status" : true
+    }
   } ]
 }

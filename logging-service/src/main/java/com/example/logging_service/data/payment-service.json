@@ -1,19 +1,16 @@
 {
   "logs" : [ {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "ReservePayment",
-    "timestamp" : 1.759315294750211E9,
-    "clientid" : 2,
-    "amount" : 170
+    "timestamp" : 1.7626851800016882E9,
+    "data" : {
+      "clientid" : 1,
+      "amount" : 90
+    }
   }, {
-    "correlationid" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationid" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "ChargeMoney",
-    "timestamp" : 1.7593152957698295E9
-  }, {
-    "correlationId" : "386ac063-631b-44ab-abf5-f1339a8cd541",
-    "eventype" : "ReservePayment",
-    "timestamp" : 1.7593153197747016E9,
-    "clientid" : 3,
-    "amount" : 170
+    "timestamp" : 1.762685181023309E9,
+    "data" : { }
   } ]
 }

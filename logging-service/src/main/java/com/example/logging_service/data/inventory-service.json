@@ -1,19 +1,18 @@
 {
   "logs" : [ {
-    "correlationId" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "ReserveItems",
-    "timestamp" : 1.759315294750207E9,
-    "itemIds" : [ 1, 2 ],
-    "quantity" : [ 1, 1 ]
+    "timestamp" : 1.7626851800016837E9,
+    "data" : {
+      "items" : [ {
+        "id" : 1,
+        "quantity" : 1
+      } ]
+    }
   }, {
-    "correlationid" : "94241542-95d1-4b8c-81ee-4a5cf8fa1f83",
+    "correlationid" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
     "eventype" : "DeductItems",
-    "timestamp" : 1.7593152957693496E9
-  }, {
-    "correlationId" : "386ac063-631b-44ab-abf5-f1339a8cd541",
-    "eventype" : "ReserveItems",
-    "timestamp" : 1.7593153197747E9,
-    "itemIds" : [ 1, 2 ],
-    "quantity" : [ 1, 1 ]
+    "timestamp" : 1.7626851810230083E9,
+    "data" : { }
   } ]
 }
