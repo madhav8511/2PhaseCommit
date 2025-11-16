@@ -7,11 +7,14 @@ import com.example.inventory_service.entity.ReservedItems;
 import com.example.inventory_service.repository.ItemRepository;
 import com.example.inventory_service.repository.ReserveItemRepository;
 import com.google.common.cache.Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 @Component("inventoryTaskScheduler")
@@ -24,6 +27,9 @@ public class TaskScheduler {
     private ReserveItemRepository reserveItemRepository;
     @Autowired
     private KafkaTemplate<String, InventoryResponse> kafkaTemplate;
+
+    private static final Logger logger = LoggerFactory.getLogger("DB_OPERATIONS");
+
 
     @Scheduled(fixedDelay = 1000)//decide what time to keep in future
     public void ReserveItems()
@@ -100,6 +106,13 @@ public class TaskScheduler {
                     reserveItems.setReserved_quantity(reserveItems.getReserved_quantity()-quantity[i]);
                     reserveItemRepository.save(reserveItems);
                     itemRepository.save(item);
+                    logger.info("correlationId: {}, eventType: {}, id: {}, itemname: {}, quantity: {}, price: {}",
+                            key,
+                            "DeductItems",
+                            item.getId(),
+                            item.getItemName(),
+                            item.getQuantity(),
+                            item.getPrice());
                 }
                 kafkaTemplate.send("coor-service",new InventoryResponse(key,true));
                 keys.add(key);

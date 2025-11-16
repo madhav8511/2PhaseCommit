@@ -7,11 +7,14 @@ import com.example.payment_service.entity.User;
 import com.example.payment_service.repository.PaymentRepository;
 import com.example.payment_service.repository.ReserveFundRepository;
 import com.google.common.cache.Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 @Component("paymentTaskScheduler")
@@ -29,6 +32,7 @@ public class TaskScheduler {
     @Autowired
     private KafkaTemplate<String, PaymentResponse> kafkaTemplate;
 
+    private static final Logger logger = LoggerFactory.getLogger("DB_OPERATIONS");
 
     @Scheduled(fixedDelay = 1000)//this needs to be fixed
     public void ReserveMoney()
@@ -89,6 +93,11 @@ public class TaskScheduler {
                 user.setBalance(user.getBalance()-reserveAmount);
                 fundReserve.setReserveAmount(fundReserve.getReserveAmount()-reserveAmount);
                 paymentRepository.save(user);
+                logger.info("correlationId: {}, eventType: {}, id:{},balance:{}",
+                        key,
+                        "DeductMoney",
+                        user.getId(),
+                        user.getBalance());
                 reserveFundRepository.save(fundReserve);
                 kafkaTemplate.send("coor-service",new PaymentResponse(reservePayment.getCorrelationId(),true)); //reserve is done correctly
                 reservePayment.setStatus(3);//

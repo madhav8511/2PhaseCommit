@@ -1,0 +1,2 @@
+{"@timestamp":"2025-11-16T13:58:20.450Z","ecs.version":"1.2.0","log.level":"INFO","message":"correlationId: 2cc3c39b-9009-4778-ae4c-6dd7f606e984, eventType: DeductItems, id: 1, itemname: laptop, quantity: 88, price: 90","process.thread.name":"scheduling-1","log.logger":"DB_OPERATIONS"}
+{"@timestamp":"2025-11-16T13:58:20.462Z","ecs.version":"1.2.0","log.level":"INFO","message":"correlationId: 2cc3c39b-9009-4778-ae4c-6dd7f606e984, eventType: DeductItems, id: 2, itemname: phone, quantity: 88, price: 80","process.thread.name":"scheduling-1","log.logger":"DB_OPERATIONS"}

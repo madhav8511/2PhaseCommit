@@ -1,22 +1,25 @@
 {
   "logs" : [ {
-    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
+    "correlationId" : "2cc3c39b-9009-4778-ae4c-6dd7f606e984",
     "eventype" : "CreateOrder",
-    "timestamp" : 1.7626851800016785E9,
+    "timestamp" : 1.7633014980723553E9,
     "data" : {
       "clientid" : 1,
-      "amount" : 90,
+      "amount" : 170,
       "items" : [ {
         "id" : 1,
+        "quantity" : 1
+      }, {
+        "id" : 2,
         "quantity" : 1
       } ]
     }
   }, {
-    "correlationid" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
+    "correlationid" : "2cc3c39b-9009-4778-ae4c-6dd7f606e984",
     "eventype" : "FinalizeOrder",
-    "timestamp" : 1.7626851810223594E9,
+    "timestamp" : 1.7633015001542308E9,
     "data" : {
-      "order_id" : 44
+      "order_id" : 81
     }
   } ]
 }

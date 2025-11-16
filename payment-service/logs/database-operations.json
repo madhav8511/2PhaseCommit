@@ -1,0 +1,1 @@
+{"@timestamp":"2025-11-16T13:58:21.179Z","ecs.version":"1.2.0","log.level":"INFO","message":"correlationId: 2cc3c39b-9009-4778-ae4c-6dd7f606e984, eventType: DeductMoney, id:1,balance:95240","process.thread.name":"scheduling-1","log.logger":"DB_OPERATIONS"}

@@ -1,18 +1,21 @@
 {
   "logs" : [ {
-    "correlationId" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
+    "correlationId" : "2cc3c39b-9009-4778-ae4c-6dd7f606e984",
     "eventype" : "ReserveItems",
-    "timestamp" : 1.7626851800016837E9,
+    "timestamp" : 1.763301498072424E9,
     "data" : {
       "items" : [ {
         "id" : 1,
         "quantity" : 1
+      }, {
+        "id" : 2,
+        "quantity" : 1
       } ]
     }
   }, {
-    "correlationid" : "9c29aaa7-35b6-4232-b5fe-a40d969ac64e",
+    "correlationid" : "2cc3c39b-9009-4778-ae4c-6dd7f606e984",
     "eventype" : "DeductItems",
-    "timestamp" : 1.7626851810230083E9,
+    "timestamp" : 1.763301500157402E9,
     "data" : { }
   } ]
 }

@@ -1,0 +1,157 @@
+{
+  "eventTypes": [
+    {
+      "name": "CreateOrder",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" },
+        { "name": "itemIds", "type": "list-integer" },
+        { "name": "quantity", "type": "list-integer" },
+        { "name": "clientid", "type": "integer" },
+        { "name": "amount", "type": "integer" }
+      ]
+    },
+    {
+      "name": "DeductItems",
+      "attributes": [
+        { "name": "correlationid", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" }
+      ]
+    },
+    {
+      "name": "FinalizeOrder",
+      "attributes": [
+        { "name": "correlationid", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" },
+        { "name": "order_id", "type": "integer" }
+      ]
+    },
+    {
+      "name": "InventoryResponse",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "status", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "OrderResponse",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "status", "type": "boolean" },
+        { "name": "id", "type": "integer" }
+      ]
+    },
+    {
+      "name": "PaymentResponse",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "status", "type": "boolean" }
+      ]
+    },
+    {
+      "name": "ReleaseFunds",
+      "attributes": [
+        { "name": "correlationid", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" }
+      ]
+    },
+    {
+      "name": "ReleaseItems",
+      "attributes": [
+        { "name": "correlationid", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" }
+      ]
+    },
+    {
+      "name": "ReserveItems",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" },
+        { "name": "itemIds", "type": "list-integer" },
+        { "name": "quantity", "type": "list-integer" },
+        { "name": "status", "type": "integer" }
+      ]
+    },
+    {
+      "name": "ReservePayment",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" },
+        { "name": "clientid", "type": "integer" },
+        { "name": "amount", "type": "integer" },
+        { "name": "status", "type": "integer" }
+      ]
+    },
+    {
+      "name": "ChargeMoney",
+      "attributes": [
+        { "name": "correlationid", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" }
+      ]
+    },
+    {
+      "name": "CancelOrder",
+      "attributes": [
+        { "name": "correlationId", "type": "string" },
+        { "name": "eventype", "type": "string" },
+        { "name": "timestamp", "type": "timestamp" }
+      ]
+    }
+  ],
+  
+  "objectTypes": [
+    {
+      "name": "Order",
+      "attributes": [
+        { "name": "orderid", "type": "integer" },
+        { "name": "clientid", "type": "integer" },
+        { "name": "itemsids", "type": "list-integer" },
+        { "name": "quantity", "type": "list-integer" },
+        { "name": "amount", "type": "integer" },
+        { "name": "status", "type": "string" }
+      ]
+    },
+    {
+      "name": "Item",
+      "attributes": [
+        { "name": "item_id", "type": "integer" },
+        { "name": "name", "type": "string" },
+        { "name": "quantity", "type": "integer" },
+        { "name": "price", "type": "integer" }
+      ]
+    },
+    {
+      "name": "User",
+      "attributes": [
+        { "name": "user_id", "type": "integer" },
+        { "name": "balance", "type": "integer" }
+      ]
+    },
+    {
+      "name": "ReservedItems",
+      "attributes": [
+        { "name": "item_id", "type": "integer" },
+        { "name": "reserved_quantity", "type": "integer" }
+      ]
+    },
+    {
+      "name": "ReserveFund",
+      "attributes": [
+        { "name": "user_id", "type": "integer" },
+        { "name": "amount", "type": "integer" }
+      ]
+    }
+  ]
+
+}
