@@ -14,6 +14,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -106,9 +107,10 @@ public class TaskScheduler {
                     reserveItems.setReserved_quantity(reserveItems.getReserved_quantity()-quantity[i]);
                     reserveItemRepository.save(reserveItems);
                     itemRepository.save(item);
-                    logger.info("correlationId: {}, eventType: {}, id: {}, itemname: {}, quantity: {}, price: {}",
+                    logger.info("correlationId: {}, eventType: {},timestamp:{}, id: {}, itemname: {}, quantity: {}, price: {}",
                             key,
                             "DeductItems",
+                            Instant.now(),
                             item.getId(),
                             item.getItemName(),
                             item.getQuantity(),

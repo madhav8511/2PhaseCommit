@@ -14,6 +14,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -93,9 +94,10 @@ public class TaskScheduler {
                 user.setBalance(user.getBalance()-reserveAmount);
                 fundReserve.setReserveAmount(fundReserve.getReserveAmount()-reserveAmount);
                 paymentRepository.save(user);
-                logger.info("correlationId: {}, eventType: {}, id:{},balance:{}",
+                logger.info("correlationId: {}, eventType: {},timestamp: {}, id:{},balance:{}",
                         key,
                         "DeductMoney",
+                        Instant.now(),
                         user.getId(),
                         user.getBalance());
                 reserveFundRepository.save(fundReserve);

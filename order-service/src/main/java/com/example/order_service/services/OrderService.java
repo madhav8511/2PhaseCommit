@@ -12,6 +12,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 @Service
@@ -48,9 +49,10 @@ public class OrderService {
           Order order = orderRepository.findById(response.getOrder_id()).orElse(null);
           order.setStatus(ORDER_STATUS.ORDER_COMPLETED.toString());
           orderRepository.save(order);
-        logger.info("correlationId: {}, eventType: {}, orderId: {}, clientId: {}, itemsIds: {}, quantity: {}, amount: {}, status: {}",
+        logger.info("correlationId: {}, eventType: {},timestamp:{}, orderId: {}, clientId: {}, itemsIds: {}, quantity: {}, amount: {}, status: {}",
                 response.getCorrelationid(),
                 "FinalizeOrder",
+                Instant.now(),
                 order.getOrderid(),
                 order.getClientId(),
                 order.getItemsids() != null ? Arrays.toString(order.getItemsids()) : "[]",

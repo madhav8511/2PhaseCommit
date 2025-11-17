@@ -1,4 +1,4 @@
-package com.example.order_service.cacheconfig;
+package com.example.order_service.config;
 
 import com.example.events.dtos.CreateOrder;
 import com.google.common.cache.Cache;

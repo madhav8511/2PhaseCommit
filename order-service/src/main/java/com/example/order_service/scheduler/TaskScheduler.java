@@ -12,6 +12,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -36,9 +37,10 @@ public class TaskScheduler {
             CreateOrder order = guavaCache.asMap().get(key);
             Order insertorder = new Order(order.getClientid(),order.getItemIds(), order.getQuantity(), order.getAmount());
             Order temp = orderRepository.save(insertorder);
-            logger.info("correlationId: {}, eventType: {}, orderId: {}, clientId: {}, itemsIds: {}, quantity: {}, amount: {}, status: {}",
+            logger.info("correlationId: {}, eventType: {},timestamp:{}, orderId: {}, clientId: {}, itemsIds: {}, quantity: {}, amount: {}, status: {}",
                     key,
                     "CreateOrder",
+                    Instant.now(),
                     temp.getOrderid(),
                     temp.getClientId(),
                     temp.getItemsids() != null ? Arrays.toString(temp.getItemsids()) : "[]",
