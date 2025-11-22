@@ -28,7 +28,7 @@ def load_any_json(path):
 
 
 # ---------------------- FIXED FUNCTION ---------------------- #
-def add_objects(logs, ocellogs,c):
+def add_objects(logs, ocellogs):
     for log in logs:
         obj = {"attributes": []}
         ts = log["@timestamp"]
@@ -36,7 +36,7 @@ def add_objects(logs, ocellogs,c):
 
         # REAL FIX: extract key:value pairs using REGEX
         # Supports arrays, strings, numbers, everything
-        pairs = re.findall(r'(\w+)\s*:\s*([^,]+(?:\[[^\]]*\])?)', message)
+        pairs = re.findall(r'(\w+)\s*:\s*(\[[^\]]*\]|[^,\s]+)', message)
 
         for key, value in pairs:
             key = key.strip()
@@ -48,12 +48,7 @@ def add_objects(logs, ocellogs,c):
 
             # id
             if key in ["id", "orderId"]:
-                obj["id"]=c+str(value)
-                # try:
-                    
-                #     obj["id"] = int(value)
-                # except:
-                #     obj["id"] = value
+                obj["id"]=str(value)
                 continue
 
             # type detection
@@ -77,6 +72,7 @@ def add_objects(logs, ocellogs,c):
         ocellogs[0]["objects"].append(obj)
 
     return ocellogs
+
 # ------------------------------------------------------------ #
 def get_qualifier(eventType):
     if eventType=="CreateOrder":
@@ -85,19 +81,21 @@ def get_qualifier(eventType):
         return "status"
     elif eventType=="DeductItems":
         return "quantity"
-    elif eventType=="DeductMoney":
+    elif eventType=="ChargeMoney":
         return "balance"
+
 def add_relationships(logs,ocellogs):
     for log in logs:
         message = log["message"]
-        pairs = re.findall(r'(\w+)\s*:\s*([^,]+(?:\[[^\]]*\])?)', message)
+        pairs = re.findall(r'(\w+)\s*:\s*(\[[^\]]*\]|[^,\s]+)', message)
+
         correlationid=-1
         eventType =""
         id=""
         for key, value in pairs:
             key = key.strip()
             value = value.strip()
-            if key.lower()=="correlationid":
+            if key.lower()=="correlationid" or key.lower() == "correlationId":
                 correlationid = value
             elif key=="eventType":
                 eventType=value
@@ -118,10 +116,10 @@ def add_relationships(logs,ocellogs):
 
 
 
-inventorylogs = load_any_json("/home/siddhesh/Documents/parent-project/inventory-service/logs/database-operations.json")
-orderlogs     = load_any_json("/home/siddhesh/Documents/parent-project/order-service/logs/database-operations.json")
-paymentlogs   = load_any_json("/home/siddhesh/Documents/parent-project/payment-service/logs/database-operations.json")
-kafkalogs     = load_any_json("/home/siddhesh/Documents/parent-project/logging-service/src/main/java/com/example/logging_service/data/events.json")
+orderlogs     = load_any_json("/home/madhav/Desktop/2PhaseCommit/order-service/logs/database-operations.json")
+inventorylogs = load_any_json("/home/madhav/Desktop/2PhaseCommit/inventory-service/logs/database-operations.json")
+paymentlogs   = load_any_json("/home/madhav/Desktop/2PhaseCommit/payment-service/logs/database-operations.json")
+kafkalogs     = load_any_json("/home/madhav/Desktop/2PhaseCommit/logging-service/src/main/java/com/example/logging_service/data/events.json")
 ocellogs      = load_any_json("ocel.json")
 
 ocellogs[0]["events"] = []
@@ -141,8 +139,12 @@ for log in kafkalogs[0]["logs"]:
     ocellogs[0]["events"].append(data)
 
 # OBJECTS
-ocellogs = add_objects(orderlogs, ocellogs,"o")
-ocellogs = add_objects(inventorylogs, ocellogs,"i")
-ocellogs = add_objects(paymentlogs, ocellogs,"p")
+ocellogs = add_objects(orderlogs, ocellogs)
+ocellogs = add_objects(inventorylogs, ocellogs)
+ocellogs = add_objects(paymentlogs, ocellogs)
+
+ocellogs = add_relationships(orderlogs,ocellogs)
+ocellogs = add_relationships(inventorylogs, ocellogs)
+ocellogs = add_relationships(paymentlogs, ocellogs)
 
 print(json.dumps(ocellogs, indent=2))

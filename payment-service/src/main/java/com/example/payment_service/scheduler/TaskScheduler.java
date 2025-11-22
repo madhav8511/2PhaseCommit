@@ -96,7 +96,7 @@ public class TaskScheduler {
                 paymentRepository.save(user);
                 logger.info("correlationId: {}, eventType: {},timestamp: {}, id:{},balance:{}",
                         key,
-                        "DeductMoney",
+                        "ChargeMoney",
                         Instant.now(),
                         user.getId(),
                         user.getBalance());
